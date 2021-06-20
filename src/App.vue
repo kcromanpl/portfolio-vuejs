@@ -44,7 +44,7 @@ export default {
       phone: "+977 - 9843267195",
       city: "Lalitpur",
       lang: "English, Nepali, Hindi",
-      photo: "photo.png",
+      photo: "photo.jpg",
     };
 
     this.links = {
