@@ -3,27 +3,27 @@
     <AnimateOnVisible name="fadeDown" :duration="1">
       <Title
         class="title"
-        :title="content.metadata.title"
-        :description="content.metadata.description"
+        :title="content.title"
+        :description="content.description"
       />
     </AnimateOnVisible>
 
-	<AnimateOnVisible name="fadeUp" :duration="1">
-		<div class="container-fluid">
-			<div class="row">
-				<ExperienceColumn
-					:posts="content.metadata.academic"
-					title="Education"
-					class="col-12 col-md left"
-				/>
-				<ExperienceColumn
-					:posts="content.metadata.professional"
-					title="Professional"
-					class="col-12 col-md right"
-				/>
-			</div>
-		</div>
-	</AnimateOnVisible>
+    <AnimateOnVisible name="fadeUp" :duration="1">
+      <div class="container-fluid">
+        <div class="row">
+          <ExperienceColumn
+            :posts="content.academic"
+            title="Education"
+            class="col-12 col-md left"
+          />
+          <ExperienceColumn
+            :posts="content.professional"
+            title="Professional"
+            class="col-12 col-md right"
+          />
+        </div>
+      </div>
+    </AnimateOnVisible>
   </section>
 </template>
 
@@ -33,11 +33,27 @@ import ExperienceColumn from "./ExperienceColumn.vue";
 
 export default {
   name: "Experience",
-  props: ["content"],
   components: {
     Title,
-    ExperienceColumn
-  }
+    ExperienceColumn,
+  },
+  created() {
+    this.content = {
+      title: "EXPERIENCE",
+      description: "PROFESSIONAL AND ACADEMIC",
+      academic: [
+        { year: 2019, title: "BSc. CSIT", content: "Patan Multiple Campus" },
+        { year: 2015, title: "+2 (Science)", content: "Pinnacle Academy" },
+        { year: 2013, title: "SLC", content: "Nava Kunja Secondary School" },
+      ],
+      professional: [
+        { year: 2019, title: "Front End Developer", content: "Dynamic Technosoft" },
+        { year: 2015, title: "Bootcamp Trainee", content: "Jyaasa Technologies" },
+        { year: 2013, title: "Associate Software Engineer", content: "Bajra Technologies" },
+        { year: 2013, title: "Software Engineer", content: "Bajra Technologies" },
+      ],
+    };
+  },
 };
 </script>
 
@@ -74,14 +90,14 @@ $linear: map-get($colors, dark);
     margin-top: 20px;
   }
   .left:before {
-    content : "";
+    content: "";
     position: absolute;
-    left    : 20%;
-    bottom  : 0;
-    height  : 2px;
-    width   : 60%;  /* or 100px */
-    border-bottom:2px solid $linear;
-}
+    left: 20%;
+    bottom: 0;
+    height: 2px;
+    width: 60%; /* or 100px */
+    border-bottom: 2px solid $linear;
+  }
 }
 
 /deep/ .text-wrapper {
